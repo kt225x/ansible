@@ -1,0 +1,5 @@
+[webservers]
+vagrant01 ansible_ssh_host=192.20.199.48  ansible_ssh_port=22
+vagrant02 ansible_ssh_host=192.20.199.49  ansible_ssh_port=22
+vagrant03 ansible_ssh_host=192.20.199.50  ansible_ssh_port=22
+ 

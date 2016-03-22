@@ -1,0 +1,40 @@
+- name: playbook for git
+  hosts: vagrant
+  sudo: True
+  tasks:
+    - name: install apt packages
+      apt: pkg={{ item }} update_cache=yes cache_valid_time=0 state=present force=yes 
+      sudo: True
+      with_items:
+         - git
+         - libjpeg-dev
+         - libpq-dev
+         - memcached
+         - nginx
+         - postgresql
+         - python-dev
+         - python-pip
+         - python-psycopg2
+         - python-setuptools
+         - python-virtualenv
+         - supervisor
+    - name: check out the repository on the host
+      git:  repo=git@github.com:lorin/mezzanine-example.git dest=~/playbook/gitdir/ accept_hostkey=yes
+      
+    - name: install required python packages
+      pip: name={{ item }} virtualenv="/home/vagrant/Mezzanine-example"     
+      with_items:
+          - gunicorn
+          - setproctitle
+          - south
+          - pysycopg2
+          - django-compressor
+          - python-memcached
+ 
+
+      
+      
+
+
+
+
